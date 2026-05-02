@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# IG — Trading Platform Landing
 
-## Getting Started
+A pixel-faithful rebuild of an IG-style trading platform landing page. Built with Next.js 16 (App Router) + Tailwind CSS v4. Single page, seven sections, all visuals rendered with pure CSS (no asset dependencies).
 
-First, run the development server:
+## Stack
+
+- Next.js 16 (App Router, Turbopack)
+- React 19
+- Tailwind CSS v4
+- TypeScript
+- Inter + Playfair Display (via `next/font`)
+
+## Sections
+
+1. Hero — eclipse illustration with floating market cards
+2. Markets grid — Forex, Indices, Shares, Commodities, Cryptocurrencies, ETFs
+3. Rewards & rebates — spheres, volume chart, green disk
+4. Award-winning platforms — checklist + aurora blob
+5. Trust card — 400,000+ traders stats
+6. Community — mountain night background with 3-step signup card
+7. Footer — aurora gradient with link columns + legal
+
+## Getting started
+
+Requires Node.js 20+ and npm.
 
 ```bash
+# install dependencies
+npm install
+
+# start the dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| command         | what it does                              |
+| --------------- | ----------------------------------------- |
+| `npm run dev`   | start the Turbopack dev server on :3000   |
+| `npm run build` | create a production build                 |
+| `npm start`     | run the production build                  |
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+app/
+  layout.tsx     # root layout, fonts, metadata
+  globals.css    # Tailwind import + custom CSS (eclipse, mountain, aurora)
+  page.tsx       # the entire landing page (all 7 sections)
+public/          # static assets
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Notes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- All product visuals (Forex tiles, share blocks, oil drums, globe, astronaut, etc.) are CSS-only approximations — swap in real 3D renders later if needed.
+- Tailwind v4 uses the new `@import "tailwindcss"` syntax and `@theme inline` blocks instead of `tailwind.config.js`.
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Private project. All rights reserved.
