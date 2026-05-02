@@ -2,25 +2,153 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0a0a0a;
+  --ig-blue: #2563eb;
+  --ig-blue-deep: #1d4ed8;
+  --ig-ink: #0b0b10;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ig-blue: var(--ig-blue);
+  --color-ig-blue-deep: var(--ig-blue-deep);
+  --color-ig-ink: var(--ig-ink);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html,
 body {
-  background: var(--background);
+  background: #f3f4f6;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, -apple-system, "Segoe UI", Roboto,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Eclipse / sun-burst behind the hero illustration */
+.eclipse-glow {
+  background:
+    radial-gradient(
+      60% 40% at 50% 60%,
+      rgba(59, 130, 246, 0.0) 0%,
+      rgba(59, 130, 246, 0.0) 38%,
+      rgba(96, 165, 250, 0.85) 42%,
+      rgba(147, 197, 253, 0.95) 46%,
+      rgba(191, 219, 254, 0.4) 52%,
+      transparent 70%
+    ),
+    radial-gradient(
+      50% 50% at 50% 65%,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 1) 35%,
+      transparent 60%
+    );
+  filter: blur(0.4px);
+}
+
+/* Soft rays around the eclipse */
+.eclipse-rays {
+  background:
+    repeating-conic-gradient(
+      from 180deg at 50% 60%,
+      rgba(147, 197, 253, 0.0) 0deg,
+      rgba(147, 197, 253, 0.55) 1deg,
+      rgba(147, 197, 253, 0.0) 3deg,
+      rgba(147, 197, 253, 0.0) 6deg
+    );
+  -webkit-mask-image: radial-gradient(
+    65% 55% at 50% 60%,
+    black 35%,
+    transparent 70%
+  );
+  mask-image: radial-gradient(
+    65% 55% at 50% 60%,
+    black 35%,
+    transparent 70%
+  );
+  filter: blur(2px);
+}
+
+/* Mountain night background */
+.mountain-bg {
+  background:
+    radial-gradient(
+      80% 60% at 50% 50%,
+      rgba(56, 189, 248, 0.18),
+      transparent 60%
+    ),
+    linear-gradient(180deg, #04060c 0%, #0a1428 50%, #04060c 100%);
+  position: relative;
+  overflow: hidden;
+}
+.mountain-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 12%, #fff 0.5px, transparent 1px),
+    radial-gradient(circle at 70% 8%, #fff 0.5px, transparent 1px),
+    radial-gradient(circle at 40% 22%, #fff 0.5px, transparent 1px),
+    radial-gradient(circle at 85% 25%, #fff 0.5px, transparent 1px),
+    radial-gradient(circle at 12% 32%, #fff 0.5px, transparent 1px),
+    radial-gradient(circle at 55% 18%, #fff 0.5px, transparent 1px);
+  opacity: 0.6;
+  pointer-events: none;
+}
+.mountain-bg::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 55%;
+  background:
+    radial-gradient(50% 90% at 50% 100%, rgba(125, 211, 252, 0.18), transparent 70%),
+    linear-gradient(
+      180deg,
+      transparent 0%,
+      transparent 35%,
+      #050a16 60%,
+      #02050d 100%
+    );
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 25%);
+  mask-image: linear-gradient(180deg, transparent 0%, black 25%);
+}
+
+/* 3D-ish abstract blob for awards section */
+.aurora-blob {
+  background:
+    radial-gradient(circle at 30% 35%, #f472b6 0%, transparent 38%),
+    radial-gradient(circle at 70% 30%, #fcd34d 0%, transparent 40%),
+    radial-gradient(circle at 60% 70%, #60a5fa 0%, transparent 45%),
+    radial-gradient(circle at 25% 75%, #34d399 0%, transparent 45%),
+    #1f2937;
+  filter: blur(2px) saturate(1.1);
+  border-radius: 9999px;
+  transform: rotate(-12deg);
+  box-shadow: 0 30px 80px -10px rgba(99, 102, 241, 0.35);
+}
+
+/* Volume bars */
+.bar {
+  background: linear-gradient(180deg, #86efac 0%, #4ade80 100%);
+  border-radius: 6px;
+  width: 22px;
+}
+
+/* Footer aurora */
+.footer-aurora {
+  background:
+    radial-gradient(60% 80% at 30% 100%, rgba(244, 114, 182, 0.4), transparent 60%),
+    radial-gradient(70% 80% at 80% 100%, rgba(96, 165, 250, 0.45), transparent 60%),
+    #0a0d18;
+}
+
+/* Text utilities */
+.font-serif-it {
+  font-family: var(--font-serif), Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
 }
