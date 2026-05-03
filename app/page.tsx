@@ -1,3 +1,7 @@
+"use client";
+
+import { useState, useEffect } from "react";
+
 export default function Home() {
   return (
     <main className="bg-[#f3f4f6]">
@@ -12,29 +16,32 @@ export default function Home() {
   );
 }
 
-/* ──────────────────────────────────────────────────────────────────────── */
-/* HERO                                                                     */
-/* ──────────────────────────────────────────────────────────────────────── */
-
 function Hero() {
   return (
     <section className="relative bg-black text-white overflow-hidden">
+      {/* Hero background image from public/hero-section.png */}
+      <div
+        className="absolute inset-0 z-0 bg-cover bg-center"
+        style={{ backgroundImage: "url('/hero-section.png')" }}
+      />
+      <div className="absolute inset-0 z-0 bg-black/45" />
+
       {/* Nav */}
       <nav className="relative z-20 max-w-7xl mx-auto px-8 pt-7 flex items-center justify-between">
-        <div className="text-2xl font-semibold tracking-tight">IG</div>
+        <div className="text-2xl font-semibold tracking-tight">POISE</div>
         <ul className="hidden md:flex items-center gap-7 text-[13px] text-neutral-200">
-          <li className="hover:text-white cursor-pointer">Trading</li>
-          <li className="hover:text-white cursor-pointer">Market Analysis</li>
-          <li className="hover:text-white cursor-pointer">Help</li>
-          <li className="hover:text-white cursor-pointer">About us</li>
-          <li className="hover:text-white cursor-pointer">Learning</li>
+          <li className="hover:text-white cursor-pointer">Exchange</li>
+          <li className="hover:text-white cursor-pointer">Markets</li>
+          <li className="hover:text-white cursor-pointer">Maker Protection</li>
+          <li className="hover:text-white cursor-pointer">Docs</li>
+          <li className="hover:text-white cursor-pointer">About</li>
         </ul>
         <div className="flex items-center gap-2">
           <button className="px-4 py-2 rounded-full bg-neutral-800/80 text-[13px] hover:bg-neutral-700 transition">
-            Log in
+            Sign in
           </button>
           <button className="px-4 py-2 rounded-full bg-blue-600 hover:bg-blue-500 text-[13px] font-medium transition shadow-[0_0_0_3px_rgba(37,99,235,0.18)]">
-            Create Live Account
+            Launch App
           </button>
         </div>
       </nav>
@@ -42,57 +49,35 @@ function Hero() {
       {/* Headline */}
       <div className="relative z-20 max-w-4xl mx-auto px-8 pt-20 text-center">
         <h1 className="text-[44px] sm:text-[56px] leading-[1.05] font-semibold tracking-tight">
-          <span className="font-serif-it font-normal">Trade CFDs</span> With
-          The World&apos;s
+          <span className="font-serif-it font-normal">A Solana exchange</span>{" "}
+          built around
           <br />
-          No 1 Provider
+          Maker Protection
         </h1>
         <p className="mt-6 text-[14px] text-neutral-300 max-w-xl mx-auto leading-relaxed">
-          Earn Up To $150 In Cashback On Your First Trades. Got Questions? Chat
-          With
+          Tighter spreads. Deeper books. Safer quoting.
           <br />
-          Us Anytime Via <span className="text-white">Web Chat</span> Or{" "}
-          <span className="text-white">WhatsApp</span> To Get Started.
+          The market quality Solana has been{" "}
+          <span className="text-white">missing</span> built{" "}
+          <span className="text-white">only for you</span>.
         </p>
         <div className="mt-7 flex items-center justify-center gap-3">
           <button className="px-5 py-2.5 rounded-full bg-blue-600 hover:bg-blue-500 text-[13px] font-medium transition">
-            Create Live Account
+            Join Waitlist
           </button>
-          <button className="px-5 py-2.5 rounded-full bg-neutral-800/80 hover:bg-neutral-700 text-[13px] transition">
-            Book a Demo
-          </button>
+          <input
+            type="email"
+            placeholder="Enter email"
+            className="w-[210px] px-5 py-2.5 rounded-full bg-neutral-800/80 border border-white/10 text-[13px] text-white placeholder:text-neutral-400 outline-none transition focus:border-blue-400/70 focus:bg-neutral-800"
+          />
         </div>
       </div>
 
-      {/* Eclipse illustration */}
+      {/* Hero market visual */}
       <div className="relative z-10 mt-14 h-[420px]">
-        <div className="absolute inset-0 eclipse-rays" />
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[820px] h-[820px] rounded-full eclipse-glow" />
-
         {/* Floating market cards */}
-        <div className="absolute left-1/2 -translate-x-1/2 top-[42%] w-[280px] rounded-2xl bg-neutral-900/85 backdrop-blur border border-white/10 p-3 space-y-2 shadow-2xl">
-          <MarketRow
-            color="bg-orange-500"
-            symbol="₿"
-            name="Spot Gold"
-            price="102833.5"
-            change="+0.57%"
-          />
-          <MarketRow
-            color="bg-blue-500"
-            symbol="W"
-            name="Wall Street"
-            price="47852.8"
-            change="+0.13%"
-          />
-          <MarketRow
-            color="bg-yellow-600"
-            symbol="$"
-            name="Spot Gold"
-            price="3982.10"
-            change="+0.32%"
-            muted
-          />
+        <div className="absolute left-1/2 -translate-x-1/2 top-[42%] w-[280px] rounded-2xl bg-neutral-900/85 backdrop-blur border border-white/10 p-3 shadow-2xl">
+          <MarketTicker />
         </div>
       </div>
     </section>
@@ -116,9 +101,12 @@ function MarketRow({
 }) {
   return (
     <div
-      className={`flex items-center justify-between rounded-xl px-3 py-2 ${
-        muted ? "opacity-50" : ""
-      }`}
+      className="flex items-center justify-between rounded-xl px-3 py-2"
+      style={{
+        opacity: muted ? 0.35 : 1,
+        filter: muted ? "blur(0.6px)" : "none",
+        transition: "opacity 0.3s ease, filter 0.3s ease",
+      }}
     >
       <div className="flex items-center gap-2.5">
         <div
@@ -130,7 +118,9 @@ function MarketRow({
       </div>
       <div className="text-right">
         <div className="text-[13px] text-white tabular-nums">{price}</div>
-        <div className="text-[11px] text-emerald-400 tabular-nums">
+        <div
+          className={`text-[11px] tabular-nums ${change.startsWith("-") ? "text-red-400" : "text-emerald-400"}`}
+        >
           {change}
         </div>
       </div>
@@ -138,9 +128,54 @@ function MarketRow({
   );
 }
 
-/* ──────────────────────────────────────────────────────────────────────── */
-/* MARKETS                                                                  */
-/* ──────────────────────────────────────────────────────────────────────── */
+const TICKER_MARKETS = [
+  { color: "bg-violet-500", symbol: "◎", name: "SOL-USDC", price: "248.34", change: "+0.57%" },
+  { color: "bg-orange-500", symbol: "₿", name: "BTC-USDC", price: "102,833", change: "+0.13%" },
+  { color: "bg-emerald-500", symbol: "J", name: "JTO-USDC", price: "3.982", change: "+0.32%" },
+  { color: "bg-blue-400",   symbol: "W", name: "WIF-USDC", price: "1.847",  change: "+1.14%" },
+  { color: "bg-yellow-400", symbol: "◉", name: "BONK-USDC", price: "0.0000312", change: "-0.45%" },
+  { color: "bg-pink-500",   symbol: "P", name: "PYTH-USDC", price: "0.284",  change: "+2.31%" },
+];
+
+const ROW_H = 44; // px — height of each MarketRow slot
+
+function MarketTicker() {
+  const [offset, setOffset] = useState(0);
+  const [sliding, setSliding] = useState(false);
+
+  useEffect(() => {
+    const id = setInterval(() => setSliding(true), 300);
+    return () => clearInterval(id);
+  }, []);
+
+  function onTransitionEnd() {
+    setSliding(false);
+    setOffset((o) => (o + 1) % TICKER_MARKETS.length);
+  }
+
+  // Render 5 items: 4 visible slots + 1 item that slides up into view from below
+  const items = Array.from({ length: 5 }, (_, i) =>
+    TICKER_MARKETS[(offset + i) % TICKER_MARKETS.length],
+  );
+
+  return (
+    <div style={{ height: ROW_H * 4, overflow: "hidden" }}>
+      <div
+        style={{
+          transform: sliding ? `translateY(-${ROW_H}px)` : "translateY(0px)",
+          transition: sliding ? "transform 0.5s cubic-bezier(0.4,0,0.2,1)" : "none",
+        }}
+        onTransitionEnd={onTransitionEnd}
+      >
+        {items.map((m, i) => (
+          <div key={`${offset}-${i}`} style={{ height: ROW_H }}>
+            <MarketRow {...m} muted={i >= 3} />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function Markets() {
   return (
@@ -148,14 +183,14 @@ function Markets() {
       <div className="max-w-7xl mx-auto px-8">
         <div className="text-center mb-12">
           <h2 className="text-[34px] font-semibold tracking-tight text-neutral-900">
-            Access 17,000+ Markets All In One
+            An exchange designed around the maker
           </h2>
           <p className="mt-3 text-[14px] text-neutral-600">
-            Trade a wide range of global markets 24/7, with spreads as
+            Six pillars that make the market healthier — visible to traders,
             <br />
-            low as 0.1 points.{" "}
+            felt by makers.{" "}
             <a className="text-blue-600 underline underline-offset-2">
-              View all markets.
+              Read the manifesto.
             </a>
           </p>
         </div>
@@ -164,41 +199,41 @@ function Markets() {
         <div className="grid grid-cols-12 gap-5">
           <MarketCard
             className="col-span-12 md:col-span-5 bg-black text-white"
-            title="Forex"
-            text="Long or short currency pairs like EUR/USD & USD/JPY."
+            title="Maker Protection"
+            text="Quote with confidence. Liquidity providers come first."
             visual={<ForexVisual />}
             dark
           />
           <MarketCard
             className="col-span-12 md:col-span-3"
-            title="Indices"
-            text="Trade 80+ global indices like the US 500 & FTSE 100."
+            title="Deep Books"
+            text="Tighter spreads and real depth across every listed market."
             visual={<IndicesVisual />}
           />
           <MarketCard
             className="col-span-12 md:col-span-4"
-            title="Shares"
-            text="Benefit from longer trading hours on 13,000+ shares."
+            title="Onchain Orderbook"
+            text="Open depth, transparent matching, fully onchain on Solana."
             visual={<SharesVisual />}
           />
 
           {/* Row 2 — 3 cards */}
           <MarketCard
             className="col-span-12 md:col-span-3"
-            title="Commodities"
-            text="Trade popular commodities like gold, oil, and natural gas."
+            title="Fair Execution"
+            text="One market. Same rules for every taker, every maker."
             visual={<CommoditiesVisual />}
           />
           <MarketCard
             className="col-span-12 md:col-span-4"
-            title="Cryptocurrencies"
-            text="Jump on the latest crypto trends, no wallet required."
+            title="Toxic Flow Defense"
+            text="Adverse interaction is identified and held accountable."
             visual={<CryptoVisual />}
           />
           <MarketCard
             className="col-span-12 md:col-span-5 bg-blue-600 text-white"
-            title="ETFs"
-            text="Choose from 5,400+ ETFs across a range of markets."
+            title="Market Quality"
+            text="A venue where execution is the product, not an afterthought."
             visual={<ETFVisual />}
             blue
           />
@@ -207,10 +242,10 @@ function Markets() {
         {/* CTAs */}
         <div className="flex justify-center gap-3 mt-10">
           <button className="px-5 py-2.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-[13px] font-medium transition">
-            Create Live Account
+            Launch App
           </button>
           <button className="px-5 py-2.5 rounded-full bg-white border border-neutral-200 hover:bg-neutral-50 text-neutral-900 text-[13px] transition">
-            Create Demo Account
+            Become a Maker
           </button>
         </div>
       </div>
@@ -420,21 +455,21 @@ function Rewards() {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
           <div>
             <h2 className="text-[34px] font-semibold tracking-tight text-neutral-900 leading-tight">
-              Enjoy Exclusive
+              Built for the makers
               <br />
-              Rewards And Rebates
+              who build the market
             </h2>
             <p className="mt-3 text-[14px] text-neutral-600 max-w-md">
-              Get more from your trading by earning additional funds based on
-              your activity.
+              Liquidity is not free. Makers who quote tighter and deeper are
+              rewarded for the market quality they create.
             </p>
           </div>
           <div className="flex gap-3">
             <button className="px-5 py-2.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-[13px] font-medium transition">
-              Create Live Account
+              Apply as a Maker
             </button>
             <button className="px-5 py-2.5 rounded-full bg-white border border-neutral-200 hover:bg-neutral-50 text-neutral-900 text-[13px] transition">
-              Create Demo Account
+              See Liquidity Tiers
             </button>
           </div>
         </div>
@@ -483,7 +518,7 @@ function Rewards() {
             </div>
             <div className="absolute -bottom-3 left-0 right-0 text-center">
               <div className="inline-block px-4 py-1.5 rounded-full bg-white text-neutral-900 text-[13px] font-semibold">
-                Volume-based rebates
+                Volume-based maker rebates
               </div>
             </div>
           </div>
@@ -514,8 +549,8 @@ function Rewards() {
         </div>
 
         <p className="text-center mt-12 text-[14px] text-neutral-700">
-          Benefit from rebates on your spreads or commissions when trading high
-          volumes.
+          Quote safely, scale your size, and earn rebates that reflect the
+          quality of your liquidity.
         </p>
       </div>
     </section>
@@ -528,16 +563,16 @@ function Rewards() {
 
 function Awards() {
   const features = [
-    "Fast, easy-to-use web platform and app",
-    "Access to the popular MetaTrader 4",
-    "Risk-management & alerts tools",
-    "L2 dealer, Pro Real Time & Trading View",
+    "Maker Protection Engine at the core",
+    "Onchain orderbook with visible depth",
+    "Transparent rules, transparent execution",
+    "Pro-grade interface, API & SDK",
   ];
   return (
     <section className="bg-[#0a0d18] text-white py-24">
       <div className="max-w-7xl mx-auto px-8">
         <h2 className="text-center text-[32px] font-semibold tracking-tight mb-12">
-          Experience With Award - Winning Platforms
+          A venue engineered for market quality
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
@@ -567,14 +602,14 @@ function Awards() {
                 ))}
               </div>
               <p className="text-[12px] text-neutral-700 leading-snug">
-                Our caring team ensures comfortable and
+                Trusted by makers who care about
                 <br />
-                painless visits for every patient.
+                spreads, depth, and fair execution.
               </p>
             </div>
 
             <button className="mt-4 w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-[13.5px] font-medium transition">
-              Explore Platforms
+              Explore the Exchange
             </button>
           </div>
 
@@ -617,23 +652,23 @@ function Trust() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 items-start">
             <div className="md:col-span-2">
               <h2 className="text-[30px] font-semibold tracking-tight text-neutral-900 leading-tight">
-                Join 400,000+ Traders
+                Liquidity is not free.
                 <br />
-                Who Trust Us
+                Market quality is designed.
               </h2>
               <p className="mt-3 text-[13px] text-neutral-600 max-w-xs">
-                Everything you need to trade the markets
+                The principles a serious exchange is built on.
               </p>
             </div>
 
-            <Stat number="17,000+" label="Markets available" badge="#1" />
-            <Stat number="50+" label="Years experience" />
+            <Stat number="100%" label="Onchain execution" badge="Native" />
+            <Stat number="Maker-first" label="Market structure" />
           </div>
 
           <div className="mt-10 grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="md:col-span-2" />
-            <Stat number="FTSE 250" label="Listed company" small />
-            <Stat number="18" label="Offices globally" small />
+            <Stat number="Solana" label="Native venue" small />
+            <Stat number="Open" label="Execution rules" small />
           </div>
         </div>
       </div>
@@ -692,16 +727,16 @@ function CornerTicks() {
 function Community() {
   const steps = [
     {
-      title: "Answer some questions",
-      text: "Tell us a bit more about you.",
+      title: "Connect your Solana wallet",
+      text: "One click. Onchain from the first interaction.",
     },
     {
-      title: "Verify your account",
-      text: "This can usually be done instantly.",
+      title: "Choose your role",
+      text: "Trade as a taker or quote as a maker.",
     },
     {
-      title: "Fund and start trading",
-      text: "Deposit via credit card, Wise or bank transfer.",
+      title: "Trade with confidence",
+      text: "Open books, fair rules, real protection.",
     },
   ];
   return (
@@ -743,20 +778,21 @@ function Community() {
       <div className="relative max-w-7xl mx-auto px-8">
         <div className="max-w-xl">
           <h2 className="text-[34px] font-semibold tracking-tight leading-tight">
-            Start your trading journey today with
-            <br />a trusted global platform.
+            Trade on a venue built for the
+            <br />
+            next era of market quality.
           </h2>
           <p className="mt-3 text-[13px] text-neutral-300 max-w-md">
-            Sign up in minutes and explore thousands of markets with confidence
-            and security.
+            Open books. Fair execution. Protection that takes liquidity
+            seriously.
           </p>
         </div>
 
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
           <div className="rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md p-5">
-            <h3 className="text-[15px] font-semibold">Join our IG community</h3>
+            <h3 className="text-[15px] font-semibold">Get started on POISE</h3>
             <p className="text-[12px] text-neutral-400 mt-1">
-              Get started in 3 simple steps.
+              Three steps to your first trade.
             </p>
             <div className="mt-4 space-y-2">
               {steps.map((s) => (
@@ -777,7 +813,7 @@ function Community() {
               ))}
             </div>
             <button className="mt-4 w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-[13.5px] font-medium transition">
-              Create Live Account
+              Launch App
             </button>
           </div>
 
@@ -816,9 +852,9 @@ function Footer() {
       <div className="max-w-7xl mx-auto px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           <div>
-            <div className="text-2xl font-semibold">IG</div>
+            <div className="text-2xl font-semibold">POISE</div>
             <p className="mt-3 text-[12px] text-neutral-400 max-w-[220px]">
-              IG International Limited is part of the IG Group.
+              A Solana exchange built around the Maker Protection Engine.
             </p>
             <div className="flex gap-3 mt-4">
               {["▶", "📷", "𝕏", "f"].map((s) => (
@@ -831,82 +867,78 @@ function Footer() {
               ))}
             </div>
             <p className="mt-5 text-[12px] text-neutral-400 max-w-[260px]">
-              IG Group established in London in 1974 and is a constituent of the
-              FTSE 250 index.
+              Onchain by design. Built for the next era of internet capital
+              markets.
             </p>
             <div className="mt-3 text-[15px] font-semibold">
-              (603) 856-01253
+              makers@poise.xyz
             </div>
             <a className="text-[12px] text-neutral-400 underline">
-              iggroup@example.com
+              support@poise.xyz
             </a>
           </div>
 
           <FooterCol
             title="Markets"
             links={[
-              "Share CFDs",
-              "Forex",
-              "Indices",
-              "Commodities",
-              "Other markets",
+              "SOL Perps",
+              "Spot",
+              "All Pairs",
+              "Liquidity Programs",
+              "Market Status",
             ]}
           />
           <FooterCol
-            title="Trading platforms"
+            title="Platform"
             links={[
-              "Web platform",
-              "Trading apps",
-              "TradingView",
-              "MetaTrader 4",
-              "MetaTrader 5",
-              "ProRealTime",
-              "Compare features",
-              "Demo",
+              "Exchange",
+              "Maker Console",
+              "API & SDK",
+              "Onchain Explorer",
+              "Wallet Support",
+              "System Status",
+              "Docs",
+              "Roadmap",
             ]}
           />
           <FooterCol
             title="About"
             links={[
-              "Charges and margins",
-              "Premium services",
-              "Refer a friend",
-              "Marketing partnerships",
-              "Corporate accounts",
+              "Manifesto",
+              "Maker Protection",
+              "Brand",
+              "Careers",
+              "Contact",
             ]}
           />
         </div>
 
         <div className="mt-12 text-[10.5px] text-neutral-400 leading-relaxed space-y-3 max-w-5xl">
           <p>
-            IG International Limited is part of the IG Group and its ultimate
-            parent company is IG Group Holdings Plc. IG Group established in
-            London in 1974, and it is a constituent of the FTSE 250 index.
+            POISE is a Solana-native exchange focused on healthier market
+            structure. The Maker Protection Engine is the wedge; the exchange
+            itself is the product.
           </p>
           <p>
-            The risks of loss from investing in CFDs can be substantial and the
-            value of your investments may fluctuate. 71% of retail client
-            accounts lose money when trading CFDs, with this investment
-            provider. CFDs are complex instruments and come with a high risk of
-            losing money rapidly due to leverage. You should consider whether
-            you understand how this product works, and whether you can afford to
-            take the high risk of losing your money.
+            Onchain trading involves risk. Crypto asset prices can move
+            sharply, and leveraged positions can be liquidated. Nothing on this
+            site constitutes investment advice. You are responsible for
+            understanding the products you trade and the risks you take.
           </p>
           <p>
-            CFD Accounts provided by IG International Limited. IG International
-            Limited is licensed to conduct investment business and ancillary
-            services by the Bermuda Monetary Authority. IG provides an
-            execution-only service. The information on this site does not
-            constitute and should not be construed as investment advice.
+            POISE provides an execution-only venue. Availability of products
+            and features may vary by jurisdiction. Smart contract code, market
+            parameters, and platform behavior may evolve as the protocol
+            matures.
           </p>
         </div>
 
         <div className="mt-10 pt-6 border-t border-white/10 flex flex-wrap items-center justify-center gap-6 text-[11px] text-neutral-300">
-          <span>© IG</span>
-          <a className="hover:text-white">Terms and agreements</a>
+          <span>© POISE</span>
+          <a className="hover:text-white">Terms</a>
           <a className="hover:text-white">Privacy</a>
-          <a className="hover:text-white">How to fund</a>
-          <a className="hover:text-white">Vulnerability</a>
+          <a className="hover:text-white">Risk Disclosure</a>
+          <a className="hover:text-white">Disclosures</a>
           <a className="hover:text-white">Cookies</a>
           <a className="hover:text-white">More ▾</a>
         </div>
