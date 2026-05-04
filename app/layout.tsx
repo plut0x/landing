@@ -14,9 +14,9 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "POISE — A Solana exchange built around Maker Protection",
+  title: "Plut0x — A Solana exchange built around Maker Protection",
   description:
-    "POISE is a Solana exchange where market makers can quote safely, books stay deep, and execution is fair. Maker Protection at the core. Onchain by design.",
+    "Plut0x is a Solana exchange where market makers can quote safely, books stay deep, and execution is fair. Maker Protection at the core. Onchain by design.",
 };
 
 export default function RootLayout({

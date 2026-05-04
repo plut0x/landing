@@ -13,7 +13,7 @@ export function Hero() {
       {/* Nav */}
       <nav className="relative z-20 max-w-7xl mx-auto px-8 pt-7 flex items-center justify-between">
         <div className="flex items-center">
-          <img src="/whitelogo-nobg.png" alt="POISE" className="h-8 w-auto object-contain" />
+          <img src="/whitelogo-nobg.png" alt="Plut0x" className="h-16 w-auto object-contain" />
         </div>
         {/* <ul className="hidden md:flex items-center gap-7 text-[13px] text-neutral-200">
           <li className="hover:text-white cursor-pointer">Exchange</li>
@@ -22,14 +22,14 @@ export function Hero() {
           <li className="hover:text-white cursor-pointer">Docs</li>
           <li className="hover:text-white cursor-pointer">About</li>
         </ul> */}
-        <div className="flex items-center gap-2">
+        {/* <div className="flex items-center gap-2">
           <button className="px-4 py-2 rounded-full bg-neutral-800/80 text-[13px] hover:bg-neutral-700 transition">
             Sign in
           </button>
           <button className="px-4 py-2 rounded-full bg-blue-600 hover:bg-blue-500 text-[13px] font-medium transition shadow-[0_0_0_3px_rgba(37,99,235,0.18)]">
             Launch App
           </button>
-        </div>
+        </div> */}
       </nav>
 
       {/* Headline */}

@@ -65,7 +65,7 @@ export function Community() {
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
           <div className="rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md p-5">
             <h3 className="text-[15px] font-semibold flex items-center gap-1.5">
-              Get started on <img src="/whitelogo-nobg.png" alt="POISE" className="h-4 w-auto object-contain" />
+              Get started on <img src="/whitelogo-nobg.png" alt="Plut0x" className="h-8 w-auto object-contain" />
             </h3>
             <p className="text-[12px] text-neutral-400 mt-1">
               Three steps to your first trade.
