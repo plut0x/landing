@@ -1,12 +1,48 @@
+"use client";
 
-import { useState, useEffect } from "react";
+import { type FormEvent, useEffect, useState } from "react";
 export function Hero() {
   const [mounted, setMounted] = useState(false);
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
+    "idle",
+  );
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 100);
     return () => clearTimeout(t);
   }, []);
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setStatus("loading");
+    setMessage("");
+
+    try {
+      const response = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const data = (await response.json()) as { message?: string };
+
+      if (!response.ok) {
+        throw new Error(data.message ?? "Could not join the waitlist.");
+      }
+
+      setStatus("success");
+      setMessage("You're on the waitlist.");
+      setEmail("");
+    } catch (error) {
+      setStatus("error");
+      setMessage(
+        error instanceof Error
+          ? error.message
+          : "Could not join the waitlist.",
+      );
+    }
+  }
 
   return (
     <section className="relative w-full min-h-screen flex flex-col bg-black text-white overflow-hidden">
@@ -81,23 +117,40 @@ export function Hero() {
           <span className="text-white">missing</span> built{" "}
           <span className="text-white">only for you</span>.
         </p>
-        <div
-          className="mt-7 flex items-center justify-center gap-3 transition-all duration-700 ease-out"
+        <form
+          onSubmit={handleSubmit}
+          className="mt-7 flex flex-col sm:flex-row items-center justify-center gap-3 transition-all duration-700 ease-out"
           style={{
             opacity: mounted ? 1 : 0,
             transform: mounted ? "translateY(0)" : "translateY(30px)",
             transitionDelay: "600ms",
           }}
         >
-          <button className="px-12 py-2.5 rounded-full bg-gradient-to-r from-yellow-500/10 to-amber-500/10 hover:from-yellow-500/20 hover:to-amber-500/20 border border-yellow-500/50 text-yellow-500 hover:text-yellow-400 text-[13px] font-bold transition-all backdrop-blur-md shadow-[0_0_20px_rgba(245,158,11,0.15)] hover:shadow-[0_0_30px_rgba(245,158,11,0.3)]">
-            Join Waitlist
-          </button>
           <input
             type="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
             placeholder="Enter email"
+            required
             className="w-[320px] px-6 py-2.5 rounded-full bg-neutral-800/80 border border-white/10 text-[13px] text-white placeholder:text-neutral-400 outline-none transition focus:border-blue-400/70 focus:bg-neutral-800"
           />
-        </div>
+          <button
+            type="submit"
+            disabled={status === "loading"}
+            className="px-12 py-2.5 rounded-full bg-gradient-to-r from-yellow-500/10 to-amber-500/10 hover:from-yellow-500/20 hover:to-amber-500/20 border border-yellow-500/50 text-yellow-500 hover:text-yellow-400 text-[13px] font-bold transition-all backdrop-blur-md shadow-[0_0_20px_rgba(245,158,11,0.15)] hover:shadow-[0_0_30px_rgba(245,158,11,0.3)] disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            {status === "loading" ? "Joining..." : "Join Waitlist"}
+          </button>
+        </form>
+        {message ? (
+          <p
+            className={`mt-3 text-[13px] ${
+              status === "success" ? "text-green-300" : "text-red-300"
+            }`}
+          >
+            {message}
+          </p>
+        ) : null}
 
       </div>
 
