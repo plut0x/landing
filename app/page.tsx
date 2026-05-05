@@ -13,9 +13,9 @@ export default function Home() {
       <Hero />
       <Markets />
       <Rewards />
-      <Awards />
-      <Trust />
-      <Community />
+      {/* <Awards /> */}
+      {/* <Trust /> */}
+      {/* <Community /> */}
       <Footer />
     </main>
   );

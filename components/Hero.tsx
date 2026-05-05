@@ -62,104 +62,104 @@ export function Hero() {
       {/* Hero market visual */}
       <div className="relative z-10 mt-14 h-[420px]">
         {/* Floating market cards */}
-        <div className="absolute left-1/2 -translate-x-1/2 top-[42%] w-[280px] rounded-2xl bg-neutral-900/85 backdrop-blur border border-white/10 p-3 shadow-2xl">
+        {/* <div className="absolute left-1/2 -translate-x-1/2 top-[42%] w-[280px] rounded-2xl bg-neutral-900/85 backdrop-blur border border-white/10 p-3 shadow-2xl">
           <MarketTicker />
-        </div>
+        </div> */}
       </div>
     </section>
   );
 }
 
 
-function MarketRow({
-  color,
-  symbol,
-  name,
-  price,
-  change,
-  muted = false,
-}: {
-  color: string;
-  symbol: string;
-  name: string;
-  price: string;
-  change: string;
-  muted?: boolean;
-}) {
-  return (
-    <div
-      className="flex items-center justify-between rounded-xl px-3 py-2"
-      style={{
-        opacity: muted ? 0.35 : 1,
-        filter: muted ? "blur(0.6px)" : "none",
-        transition: "opacity 0.3s ease, filter 0.3s ease",
-      }}
-    >
-      <div className="flex items-center gap-2.5">
-        <div
-          className={`w-7 h-7 rounded-full ${color} grid place-items-center text-[12px] font-bold text-white`}
-        >
-          {symbol}
-        </div>
-        <span className="text-[13px] text-white">{name}</span>
-      </div>
-      <div className="text-right">
-        <div className="text-[13px] text-white tabular-nums">{price}</div>
-        <div
-          className={`text-[11px] tabular-nums ${change.startsWith("-") ? "text-red-400" : "text-emerald-400"}`}
-        >
-          {change}
-        </div>
-      </div>
-    </div>
-  );
-}
+// function MarketRow({
+//   color,
+//   symbol,
+//   name,
+//   price,
+//   change,
+//   muted = false,
+// }: {
+//   color: string;
+//   symbol: string;
+//   name: string;
+//   price: string;
+//   change: string;
+//   muted?: boolean;
+// }) {
+//   return (
+//     <div
+//       className="flex items-center justify-between rounded-xl px-3 py-2"
+//       style={{
+//         opacity: muted ? 0.35 : 1,
+//         filter: muted ? "blur(0.6px)" : "none",
+//         transition: "opacity 0.3s ease, filter 0.3s ease",
+//       }}
+//     >
+//       <div className="flex items-center gap-2.5">
+//         <div
+//           className={`w-7 h-7 rounded-full ${color} grid place-items-center text-[12px] font-bold text-white`}
+//         >
+//           {symbol}
+//         </div>
+//         <span className="text-[13px] text-white">{name}</span>
+//       </div>
+//       <div className="text-right">
+//         <div className="text-[13px] text-white tabular-nums">{price}</div>
+//         <div
+//           className={`text-[11px] tabular-nums ${change.startsWith("-") ? "text-red-400" : "text-emerald-400"}`}
+//         >
+//           {change}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
 
-const TICKER_MARKETS = [
-  { color: "bg-violet-500", symbol: "◎", name: "SOL-USDC", price: "248.34", change: "+0.57%" },
-  { color: "bg-orange-500", symbol: "₿", name: "BTC-USDC", price: "102,833", change: "+0.13%" },
-  { color: "bg-emerald-500", symbol: "J", name: "JTO-USDC", price: "3.982", change: "+0.32%" },
-  { color: "bg-blue-400",   symbol: "W", name: "WIF-USDC", price: "1.847",  change: "+1.14%" },
-  { color: "bg-yellow-400", symbol: "◉", name: "BONK-USDC", price: "0.0000312", change: "-0.45%" },
-  { color: "bg-pink-500",   symbol: "P", name: "PYTH-USDC", price: "0.284",  change: "+2.31%" },
-];
+// const TICKER_MARKETS = [
+//   { color: "bg-violet-500", symbol: "◎", name: "SOL-USDC", price: "248.34", change: "+0.57%" },
+//   { color: "bg-orange-500", symbol: "₿", name: "BTC-USDC", price: "102,833", change: "+0.13%" },
+//   { color: "bg-emerald-500", symbol: "J", name: "JTO-USDC", price: "3.982", change: "+0.32%" },
+//   { color: "bg-blue-400",   symbol: "W", name: "WIF-USDC", price: "1.847",  change: "+1.14%" },
+//   { color: "bg-yellow-400", symbol: "◉", name: "BONK-USDC", price: "0.0000312", change: "-0.45%" },
+//   { color: "bg-pink-500",   symbol: "P", name: "PYTH-USDC", price: "0.284",  change: "+2.31%" },
+// ];
 
-const ROW_H = 44; // px — height of each MarketRow slot
+// const ROW_H = 44; // px — height of each MarketRow slot
 
-function MarketTicker() {
-  const [offset, setOffset] = useState(0);
-  const [sliding, setSliding] = useState(false);
+// function MarketTicker() {
+//   const [offset, setOffset] = useState(0);
+//   const [sliding, setSliding] = useState(false);
 
-  useEffect(() => {
-    const id = setInterval(() => setSliding(true), 300);
-    return () => clearInterval(id);
-  }, []);
+//   useEffect(() => {
+//     const id = setInterval(() => setSliding(true), 300);
+//     return () => clearInterval(id);
+//   }, []);
 
-  function onTransitionEnd() {
-    setSliding(false);
-    setOffset((o) => (o + 1) % TICKER_MARKETS.length);
-  }
+//   function onTransitionEnd() {
+//     setSliding(false);
+//     setOffset((o) => (o + 1) % TICKER_MARKETS.length);
+//   }
 
-  // Render 5 items: 4 visible slots + 1 item that slides up into view from below
-  const items = Array.from({ length: 5 }, (_, i) =>
-    TICKER_MARKETS[(offset + i) % TICKER_MARKETS.length],
-  );
+//   // Render 5 items: 4 visible slots + 1 item that slides up into view from below
+//   const items = Array.from({ length: 5 }, (_, i) =>
+//     TICKER_MARKETS[(offset + i) % TICKER_MARKETS.length],
+//   );
 
-  return (
-    <div style={{ height: ROW_H * 4, overflow: "hidden" }}>
-      <div
-        style={{
-          transform: sliding ? `translateY(-${ROW_H}px)` : "translateY(0px)",
-          transition: sliding ? "transform 0.5s cubic-bezier(0.4,0,0.2,1)" : "none",
-        }}
-        onTransitionEnd={onTransitionEnd}
-      >
-        {items.map((m, i) => (
-          <div key={`${offset}-${i}`} style={{ height: ROW_H }}>
-            <MarketRow {...m} muted={i >= 3} />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
+//   return (
+//     <div style={{ height: ROW_H * 4, overflow: "hidden" }}>
+//       <div
+//         style={{
+//           transform: sliding ? `translateY(-${ROW_H}px)` : "translateY(0px)",
+//           transition: sliding ? "transform 0.5s cubic-bezier(0.4,0,0.2,1)" : "none",
+//         }}
+//         onTransitionEnd={onTransitionEnd}
+//       >
+//         {items.map((m, i) => (
+//           <div key={`${offset}-${i}`} style={{ height: ROW_H }}>
+//             <MarketRow {...m} muted={i >= 3} />
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// }

@@ -59,16 +59,6 @@ export function Markets() {
             blue
           />
         </div>
-
-        {/* CTAs */}
-        <div className="flex justify-center gap-3 mt-10">
-          <button className="px-5 py-2.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-[13px] font-medium transition">
-            Launch App
-          </button>
-          <button className="px-5 py-2.5 rounded-full bg-white border border-neutral-200 hover:bg-neutral-50 text-neutral-900 text-[13px] transition">
-            Become a Maker
-          </button>
-        </div>
       </div>
     </section>
   );
