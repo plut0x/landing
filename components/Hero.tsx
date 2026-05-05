@@ -95,7 +95,7 @@ export function Hero() {
             transitionDelay: "200ms",
           }}
         >
-          <span className="font-serif-it font-normal">Exchange built for Makers</span>{" "}
+          <span className="font-serif-it font-normal">Exchange Built For Makers</span>{" "}
           
           <br />
           <span className="mt-4 sm:mt-5 text-[18px] sm:text-[22px] flex items-center justify-center gap-2 font-normal text-neutral-200">
