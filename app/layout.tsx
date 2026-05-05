@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   description:
     "Plut0x is a Solana exchange where market makers can quote safely, books stay deep, and execution is fair. Maker Protection at the core. Onchain by design.",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon2.ico",
   },
 };
 
