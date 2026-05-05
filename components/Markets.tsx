@@ -32,6 +32,10 @@ export function Markets() {
 
   return (
     <section ref={ref} className="relative py-24 bg-[#06080C] overflow-hidden  bg-cover bg-center">
+      {/* Ambient background glow effects */}
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[150px] pointer-events-none z-0" />
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-emerald-500/5 rounded-full blur-[150px] pointer-events-none z-0" />
+
       {/* Blend gradients for smooth transitions to sections above and below */}
       <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black to-transparent pointer-events-none z-0" />
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#06080C] to-transparent pointer-events-none z-0" />
