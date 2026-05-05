@@ -1,36 +1,35 @@
-import { prisma } from "@/lib/prisma";
+import { NextResponse } from 'next/server'
+import { prisma } from '@/lib/prisma'
 
-export const runtime = "nodejs";
-
-const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-export async function POST(request: Request) {
+export async function POST(req: Request) {
   try {
-    const body = (await request.json()) as { email?: unknown };
-    const email =
-      typeof body.email === "string" ? body.email.trim().toLowerCase() : "";
+    const body = await req.json()
+    const { email } = body
 
-    if (!emailPattern.test(email)) {
-      return Response.json(
-        { message: "Enter a valid email address." },
-        { status: 400 },
-      );
+    if (!email || typeof email !== 'string') {
+      return NextResponse.json(
+        { error: 'A valid email is required' },
+        { status: 400 }
+      )
     }
 
+    const user = await prisma.user.create({
+      data: { email: email.toLowerCase().trim() },
+    })
 
-    const user = await prisma.user.upsert({
-      where: { email },
-      create: { email},
-      select: { id: true, email: true },
-    });
-
-    return Response.json({ user });
-  } catch (error) {
-    console.error("Waitlist signup failed", error);
-
-    return Response.json(
-      { message: "Could not join the waitlist right now." },
-      { status: 500 },
-    );
+    return NextResponse.json(user, { status: 201 })
+  } catch (error: any) {
+    if (error.code === 'P2002') {
+      return NextResponse.json(
+        { error: 'This email is already on the waitlist!' },
+        { status: 400 }
+      )
+    }
+    
+    console.error('Waitlist error:', error);
+    return NextResponse.json(
+      { error: 'Something went wrong' },
+      { status: 500 }
+    )
   }
 }
