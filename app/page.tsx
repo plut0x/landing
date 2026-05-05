@@ -9,14 +9,16 @@ import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="bg-[#f3f4f6]">
+    <main className="bg-[#06080C] min-h-screen">
       <Hero />
       <Markets />
-      <Rewards />
-      {/* <Awards /> */}
-      {/* <Trust /> */}
-      {/* <Community /> */}
-      <Footer />
+      <div className="bg-[url('/bg-5.png')] bg-cover bg-center">
+        <Rewards />
+        {/* <Awards /> */}
+        {/* <Trust /> */}
+        {/* <Community /> */}
+        <Footer />
+      </div>
     </main>
   );
 }

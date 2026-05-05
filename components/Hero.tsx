@@ -1,6 +1,13 @@
 
 import { useState, useEffect } from "react";
 export function Hero() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setMounted(true), 100);
+    return () => clearTimeout(t);
+  }, []);
+
   return (
     <section className="relative bg-black text-white overflow-hidden">
       {/* Hero background image from public/hero-section.png */}
@@ -11,43 +18,55 @@ export function Hero() {
       <div className="absolute inset-0 z-0 bg-black/45" />
 
       {/* Nav */}
-      <nav className="relative z-20 max-w-7xl mx-auto px-8 pt-7 flex items-center justify-between">
+      <nav
+        className="relative z-20 max-w-7xl mx-auto px-8 pt-7 flex items-center justify-between transition-all duration-700 ease-out"
+        style={{
+          opacity: mounted ? 1 : 0,
+          transform: mounted ? "translateY(0)" : "translateY(-20px)",
+        }}
+      >
         <div className="flex items-center">
           <img src="/whitelogo-nobg.png" alt="Plut0x" className="h-16 w-auto object-contain" />
         </div>
-        {/* <ul className="hidden md:flex items-center gap-7 text-[13px] text-neutral-200">
-          <li className="hover:text-white cursor-pointer">Exchange</li>
-          <li className="hover:text-white cursor-pointer">Markets</li>
-          <li className="hover:text-white cursor-pointer">Maker Protection</li>
-          <li className="hover:text-white cursor-pointer">Docs</li>
-          <li className="hover:text-white cursor-pointer">About</li>
-        </ul> */}
-        {/* <div className="flex items-center gap-2">
-          <button className="px-4 py-2 rounded-full bg-neutral-800/80 text-[13px] hover:bg-neutral-700 transition">
-            Sign in
-          </button>
-          <button className="px-4 py-2 rounded-full bg-blue-600 hover:bg-blue-500 text-[13px] font-medium transition shadow-[0_0_0_3px_rgba(37,99,235,0.18)]">
-            Launch App
-          </button>
-        </div> */}
       </nav>
 
       {/* Headline */}
       <div className="relative z-20 max-w-4xl mx-auto px-8 pt-20 text-center">
-        <h1 className="text-[44px] sm:text-[56px] leading-[1.05] font-semibold tracking-tight">
+        <h1
+          className="text-[44px] sm:text-[56px] leading-[1.05] font-semibold tracking-tight transition-all duration-700 ease-out"
+          style={{
+            opacity: mounted ? 1 : 0,
+            transform: mounted ? "translateY(0)" : "translateY(30px)",
+            transitionDelay: "200ms",
+          }}
+        >
           <span className="font-serif-it font-normal">A Solana exchange</span>{" "}
           built around
           <br />
           Maker Protection
         </h1>
-        <p className="mt-6 text-[14px] text-neutral-300 max-w-xl mx-auto leading-relaxed">
+        <p
+          className="mt-6 text-[14px] text-neutral-300 max-w-xl mx-auto leading-relaxed transition-all duration-700 ease-out"
+          style={{
+            opacity: mounted ? 1 : 0,
+            transform: mounted ? "translateY(0)" : "translateY(30px)",
+            transitionDelay: "400ms",
+          }}
+        >
           Tighter spreads. Deeper books. Safer quoting.
           <br />
           The market quality Solana has been{" "}
           <span className="text-white">missing</span> built{" "}
           <span className="text-white">only for you</span>.
         </p>
-        <div className="mt-7 flex items-center justify-center gap-3">
+        <div
+          className="mt-7 flex items-center justify-center gap-3 transition-all duration-700 ease-out"
+          style={{
+            opacity: mounted ? 1 : 0,
+            transform: mounted ? "translateY(0)" : "translateY(30px)",
+            transitionDelay: "600ms",
+          }}
+        >
           <button className="px-5 py-2.5 rounded-full bg-blue-600 hover:bg-blue-500 text-[13px] font-medium transition">
             Join Waitlist
           </button>
@@ -61,10 +80,6 @@ export function Hero() {
 
       {/* Hero market visual */}
       <div className="relative z-10 mt-14 h-[420px]">
-        {/* Floating market cards */}
-        {/* <div className="absolute left-1/2 -translate-x-1/2 top-[42%] w-[280px] rounded-2xl bg-neutral-900/85 backdrop-blur border border-white/10 p-3 shadow-2xl">
-          <MarketTicker />
-        </div> */}
       </div>
     </section>
   );

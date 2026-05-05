@@ -1,6 +1,6 @@
 export function Footer() {
   return (
-    <footer className="bg-zinc-900 text-white py-3 border-t border-white/10">
+    <footer className="text-white py-8 border-white/10">
       <div className="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-4">
         <div className="flex items-center">
           <img src="/whitelogo-nobg.png" alt="Plut0x" className="h-8 w-auto object-contain" />
