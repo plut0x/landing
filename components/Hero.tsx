@@ -25,10 +25,10 @@ export function Hero() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
       });
-      const data = (await response.json()) as { message?: string };
+      const data = (await response.json()) as { message?: string; error?: string };
 
       if (!response.ok) {
-        throw new Error(data.message ?? "Could not join the waitlist.");
+        throw new Error(data.error ?? data.message ?? "Could not join the waitlist.");
       }
 
       setStatus("success");

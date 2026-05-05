@@ -13,6 +13,14 @@ export async function POST(req: Request) {
       )
     }
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email.trim())) {
+      return NextResponse.json(
+        { error: 'Please enter a valid email address' },
+        { status: 400 }
+      )
+    }
+
     const user = await prisma.user.create({
       data: { email: email.toLowerCase().trim() },
     })
