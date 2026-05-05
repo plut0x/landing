@@ -1,256 +1,114 @@
 export function Markets() {
   return (
-    <section className="bg-[#f3f4f6] py-24">
-      <div className="max-w-7xl mx-auto px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-[34px] font-semibold tracking-tight text-neutral-900">
-            An exchange designed around the maker
-          </h2>
-          <p className="mt-3 text-[14px] text-neutral-600">
-            Six pillars that make the market healthier — visible to traders,
-            <br />
-            felt by makers.{" "}
-            <a className="text-blue-600 underline underline-offset-2">
-              Read the manifesto.
-            </a>
-          </p>
+    <section className="relative py-24 bg-[#06080C] overflow-hidden bg-[url('/bg-5.png')] bg-cover bg-center">
+      <div className="max-w-7xl mx-auto px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+          {/* Left Column */}
+          <div className="max-w-md">
+            <h3 className="text-[#3b82f6] text-[11px] font-bold tracking-[0.2em] uppercase mb-5">
+              Built for a healthier market
+            </h3>
+            <h2 className="text-[38px] md:text-[44px] font-semibold tracking-tight text-white leading-[1.1] mb-6">
+              Maker Protection
+              <br />
+              from Adverse selection
+            </h2>
+            <p className="text-neutral-400 text-[15px] leading-relaxed">
+              A protected environment for makers to quote
+              <br />
+              with confidence and grow the market.
+            </p>
+          </div>
+
+          {/* Right Column */}
+          <div className="flex flex-col gap-4">
+            {/* Card 1 */}
+            <div className="relative rounded-2xl bg-gradient-to-r from-[#111622]/80 to-[#101828]/60 border border-white/5 p-6 flex items-center gap-6 overflow-hidden backdrop-blur-md">
+              <div className="flex-shrink-0 w-14 h-14 rounded-full bg-[#1A233A] grid place-items-center">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+              </div>
+              <div className="flex-grow z-10 pr-12">
+                <h4 className="text-white font-medium text-[15px] mb-1.5">
+                  Deeper pools from makers
+                  <br />
+                  who can quote without being picked off.
+                </h4>
+                <p className="text-neutral-500 text-[13px] leading-relaxed">
+                  Stronger depth, more resilience,
+                  <br />
+                  and liquidity that lasts.
+                </p>
+              </div>
+              <div className="absolute right-8 top-1/2 -translate-y-1/2 text-4xl font-light text-[#2A344A] pointer-events-none">
+                01
+              </div>
+            </div>
+
+            {/* Card 2 */}
+            <div className="relative rounded-2xl bg-gradient-to-r from-[#111622]/80 to-[#0F1C18]/60 border border-white/5 p-6 flex items-center gap-6 overflow-hidden backdrop-blur-md">
+              <div className="flex-shrink-0 w-14 h-14 rounded-full bg-[#162923] grid place-items-center">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="20" x2="18" y2="10"/>
+                  <line x1="12" y1="20" x2="12" y2="4"/>
+                  <line x1="6" y1="20" x2="6" y2="14"/>
+                  <polyline points="4 12 10 6 14 10 20 4"/>
+                </svg>
+              </div>
+              <div className="flex-grow z-10 pr-12">
+                <h4 className="text-white font-medium text-[15px] mb-1.5">
+                  Better prices as safer quoting
+                  <br />
+                  brings more committed liquidity.
+                </h4>
+                <p className="text-neutral-500 text-[13px] leading-relaxed">
+                  More confidence from makers
+                  <br />
+                  leads to better prices for traders.
+                </p>
+              </div>
+              <div className="absolute right-8 top-1/2 -translate-y-1/2 text-4xl font-light text-[#223B33] pointer-events-none">
+                02
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="relative rounded-2xl bg-gradient-to-r from-[#111622]/80 to-[#101828]/60 border border-white/5 p-6 flex items-center gap-6 overflow-hidden backdrop-blur-md">
+              <div className="flex-shrink-0 w-14 h-14 rounded-full bg-[#1A233A] grid place-items-center">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 19V5l-4 4" stroke="#4ade80"/>
+                  <path d="M15 5v14l4-4" stroke="#3b82f6"/>
+                  <line x1="12" y1="5" x2="12" y2="19" strokeDasharray="3 3" stroke="#6b7280" strokeWidth="1.5" />
+                </svg>
+              </div>
+              <div className="flex-grow z-10 pr-12">
+                <h4 className="text-white font-medium text-[15px] mb-1.5">
+                  Tighter spreads and fairer
+                  <br />
+                  execution for every trader.
+                </h4>
+                <p className="text-neutral-500 text-[13px] leading-relaxed">
+                  Improved market quality,
+                  <br />
+                  better outcomes for all.
+                </p>
+              </div>
+              <div className="absolute right-8 top-1/2 -translate-y-1/2 text-4xl font-light text-[#2A344A] pointer-events-none">
+                03
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* Row 1 — 3 cards */}
-        <div className="grid grid-cols-12 gap-5">
-          <MarketCard
-            className="col-span-12 md:col-span-5 bg-black text-white"
-            title="Maker Protection"
-            text="Quote with confidence. Liquidity providers come first."
-            visual={<ForexVisual />}
-            dark
-          />
-          <MarketCard
-            className="col-span-12 md:col-span-3"
-            title="Deep Books"
-            text="Tighter spreads and real depth across every listed market."
-            visual={<IndicesVisual />}
-          />
-          <MarketCard
-            className="col-span-12 md:col-span-4"
-            title="Onchain Orderbook"
-            text="Open depth, transparent matching, fully onchain on Solana."
-            visual={<SharesVisual />}
-          />
-
-          {/* Row 2 — 3 cards */}
-          <MarketCard
-            className="col-span-12 md:col-span-3"
-            title="Fair Execution"
-            text="One market. Same rules for every taker, every maker."
-            visual={<CommoditiesVisual />}
-          />
-          <MarketCard
-            className="col-span-12 md:col-span-4"
-            title="Toxic Flow Defense"
-            text="Adverse interaction is identified and held accountable."
-            visual={<CryptoVisual />}
-          />
-          <MarketCard
-            className="col-span-12 md:col-span-5 bg-blue-600 text-white"
-            title="Market Quality"
-            text="A venue where execution is the product, not an afterthought."
-            visual={<ETFVisual />}
-            blue
-          />
+        {/* Bottom Note */}
+        <div className="mt-24 mb-4 flex justify-center items-center gap-2.5 text-neutral-400 text-[13px]">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <polygon points="12 2 15 9 22 12 15 15 12 22 9 15 2 12 9 9 12 2"/>
+          </svg>
+          <span>Quote safely, scale your size, and earn rebates that reflect the quality of your liquidity.</span>
         </div>
       </div>
     </section>
-  );
-}
-
-function MarketCard({
-  className = "",
-  title,
-  text,
-  visual,
-  dark = false,
-  blue = false,
-}: {
-  className?: string;
-  title: string;
-  text: string;
-  visual: React.ReactNode;
-  dark?: boolean;
-  blue?: boolean;
-}) {
-  const subText = dark
-    ? "text-neutral-400"
-    : blue
-      ? "text-blue-100"
-      : "text-neutral-500";
-  return (
-    <div
-      className={`relative rounded-2xl overflow-hidden p-6 h-[210px] bg-white ${className}`}
-    >
-      <h3 className="text-[16px] font-semibold tracking-tight">{title}</h3>
-      <p className={`mt-2 text-[12.5px] leading-relaxed max-w-[170px] ${subText}`}>
-        {text}
-      </p>
-      <div className="absolute right-0 bottom-0 w-3/5 h-3/5">{visual}</div>
-    </div>
-  );
-}
-
-/* — Visuals (CSS-only 3D-ish illustrations) — */
-
-function ForexVisual() {
-  return (
-    <div className="relative w-full h-full">
-      {[0, 1, 2].map((i) => (
-        <div
-          key={i}
-          className="absolute rounded-md"
-          style={{
-            left: `${20 + i * 35}px`,
-            top: `${i * 22}px`,
-            width: "100px",
-            height: "60px",
-            background:
-              "linear-gradient(135deg, #e5e7eb 0%, #9ca3af 60%, #6b7280 100%)",
-            transform: "perspective(400px) rotateX(55deg) rotateZ(-15deg)",
-            boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
-          }}
-        >
-          <div className="absolute inset-0 grid place-items-center text-red-600 text-2xl font-bold">
-            $
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function IndicesVisual() {
-  return (
-    <div className="relative w-full h-full">
-      {[0, 1, 2, 3].map((i) => (
-        <div
-          key={i}
-          className="absolute bottom-2 rounded-full"
-          style={{
-            left: `${i * 24}px`,
-            width: "22px",
-            height: `${40 + i * 14}px`,
-            background:
-              "linear-gradient(180deg, #e5e7eb 0%, #9ca3af 50%, #4b5563 100%)",
-            boxShadow: "inset -2px 0 4px rgba(0,0,0,0.3)",
-          }}
-        />
-      ))}
-    </div>
-  );
-}
-
-function SharesVisual() {
-  return (
-    <div className="relative w-full h-full">
-      {[0, 1, 2].map((i) => (
-        <div
-          key={i}
-          className="absolute rounded-xl bg-neutral-800"
-          style={{
-            left: `${i * 26}px`,
-            top: `${i * 14}px`,
-            width: "78px",
-            height: "78px",
-            transform: "perspective(400px) rotateX(55deg) rotateZ(-12deg)",
-            boxShadow: "0 12px 30px rgba(0,0,0,0.45)",
-          }}
-        >
-          <div className="absolute inset-0 grid place-items-center">
-            <svg viewBox="0 0 24 24" className="w-7 h-7 text-white">
-              <path
-                fill="currentColor"
-                d="M16.365 12.235c-.024-2.527 2.064-3.737 2.158-3.797-1.176-1.72-3.005-1.957-3.654-1.984-1.555-.157-3.034.918-3.823.918-.79 0-2.001-.895-3.293-.871-1.694.025-3.257.985-4.13 2.504-1.762 3.054-.451 7.572 1.265 10.052.84 1.215 1.84 2.578 3.149 2.53 1.262-.05 1.74-.819 3.265-.819 1.524 0 1.957.819 3.293.792 1.36-.024 2.224-1.236 3.057-2.456.965-1.41 1.362-2.78 1.386-2.85-.03-.013-2.658-1.02-2.682-4.019zM13.78 4.6c.694-.84 1.163-2.005 1.034-3.165-.999.04-2.21.665-2.928 1.5-.643.74-1.207 1.92-1.054 3.06 1.114.087 2.253-.566 2.948-1.395z"
-              />
-            </svg>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function CommoditiesVisual() {
-  return (
-    <div className="relative w-full h-full">
-      <div
-        className="absolute left-2 bottom-0 w-10 h-16 rounded-sm"
-        style={{
-          background:
-            "linear-gradient(180deg, #d6d3d1 0%, #a8a29e 60%, #6b7280 100%)",
-        }}
-      />
-      <div
-        className="absolute left-14 bottom-0 w-12 h-20 rounded-md"
-        style={{
-          background:
-            "linear-gradient(180deg, #1f2937 0%, #111827 60%, #030712 100%)",
-        }}
-      >
-        <div className="absolute top-3 left-0 right-0 h-px bg-neutral-700" />
-        <div className="absolute bottom-3 left-0 right-0 h-px bg-neutral-700" />
-      </div>
-      <div
-        className="absolute left-28 bottom-0 w-10 h-16 rounded-sm"
-        style={{
-          background:
-            "linear-gradient(180deg, #fde68a 0%, #d97706 60%, #92400e 100%)",
-        }}
-      />
-    </div>
-  );
-}
-
-function CryptoVisual() {
-  return (
-    <div className="relative w-full h-full">
-      {[0, 1, 2].map((i) => (
-        <div
-          key={i}
-          className="absolute rounded-full grid place-items-center"
-          style={{
-            left: `${10 + i * 30}px`,
-            top: `${i * 14}px`,
-            width: "70px",
-            height: "70px",
-            background:
-              "radial-gradient(circle at 30% 30%, #4b5563, #111827 70%)",
-            boxShadow: "0 10px 25px rgba(0,0,0,0.45)",
-          }}
-        >
-          <span className="text-red-500 text-2xl font-bold">₿</span>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function ETFVisual() {
-  return (
-    <div className="relative w-full h-full">
-      <div
-        className="absolute right-2 bottom-0 w-32 h-32 rounded-full"
-        style={{
-          background:
-            "radial-gradient(circle at 35% 30%, #6b7280 0%, #1f2937 60%, #030712 100%)",
-          boxShadow: "inset -20px -20px 40px rgba(0,0,0,0.6)",
-        }}
-      >
-        <div
-          className="absolute inset-3 rounded-full opacity-80 mix-blend-screen"
-          style={{
-            background:
-              "radial-gradient(20px 14px at 35% 35%, #9ca3af, transparent 70%), radial-gradient(28px 16px at 60% 45%, #9ca3af, transparent 70%), radial-gradient(18px 10px at 50% 70%, #9ca3af, transparent 70%)",
-          }}
-        />
-      </div>
-    </div>
   );
 }
