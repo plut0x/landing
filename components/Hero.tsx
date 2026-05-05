@@ -17,9 +17,18 @@ export function Hero() {
       />
       <div className="absolute inset-0 z-0 bg-black/45" />
 
-      {/* Ambient Deep Space Gold & Electric Cyan Glow */}
-      <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-yellow-500/10 rounded-full blur-[160px] pointer-events-none z-0" />
-      <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-cyan-500/10 rounded-full blur-[160px] pointer-events-none z-0" />
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes space-breathe-2 {
+          0%, 100% { transform: translateX(-50%) translateY(0) scale(1); opacity: 0.4; }
+          50% { transform: translateX(-70%) translateY(-10%) scale(1.5); opacity: 1; }
+        }
+      `}} />
+
+      {/* Ambient Electric Cyan Glow */}
+      <div 
+        className="absolute top-[20%] left-1/2 w-[800px] h-[500px] bg-cyan-500/20 rounded-full blur-[160px] pointer-events-none z-0" 
+        style={{ animation: 'space-breathe-2 8s ease-in-out infinite' }}
+      />
 
       {/* Nav */}
       <nav
