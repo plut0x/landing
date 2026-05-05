@@ -14,9 +14,12 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Plut0x — A Solana exchange built around Maker Protection",
+  title: "Plut0x",
   description:
     "Plut0x is a Solana exchange where market makers can quote safely, books stay deep, and execution is fair. Maker Protection at the core. Onchain by design.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
