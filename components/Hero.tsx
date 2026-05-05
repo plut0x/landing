@@ -41,7 +41,7 @@ export function Hero() {
         <div className="flex items-center">
           <img src="/whitelogo-nobg.png" alt="Plut0x" className="h-16 w-auto object-contain" />
         </div>
-        <a href="#" className="flex items-center gap-2 text-sm text-neutral-400 hover:text-white transition">
+        <a href="https://x.com/plut0xtrade" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[13px] font-medium text-neutral-300 hover:text-white transition border border-white/10 hover:border-white/20 hover:bg-white/5 px-4 py-2 rounded-full backdrop-blur-sm">
           <svg viewBox="0 0 24 24" aria-hidden="true" className="h-3.5 w-3.5 fill-current">
             <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
           </svg>
@@ -59,10 +59,13 @@ export function Hero() {
             transitionDelay: "200ms",
           }}
         >
-          <span className="font-serif-it font-normal">A Solana exchange</span>{" "}
-          built around
+          <span className="font-serif-it font-normal">Exchange built for Makers</span>{" "}
+          
           <br />
-          Maker Protection
+          <span className="mt-5 text-[22px] flex items-center justify-center gap-2 font-normal text-neutral-200">
+            Powered by
+            <img src="/solanaLogo.svg" alt="Solana" className="h-4 w-auto object-contain mt-1" />
+          </span>
         </h1>
         <p
           className="mt-6 text-[14px] text-neutral-300 max-w-xl mx-auto leading-relaxed transition-all duration-700 ease-out"
@@ -95,16 +98,7 @@ export function Hero() {
             className="w-[320px] px-6 py-2.5 rounded-full bg-neutral-800/80 border border-white/10 text-[13px] text-white placeholder:text-neutral-400 outline-none transition focus:border-blue-400/70 focus:bg-neutral-800"
           />
         </div>
-        <p
-          className="font-serif-it mt-8 text-[20px] text-yellow-200 font-bold transition-all duration-700 ease-out"
-          style={{
-            opacity: mounted ? 1 : 0,
-            transform: mounted ? "translateY(0)" : "translateY(30px)",
-            transitionDelay: "800ms",
-          }}
-        >
-          Join the waitlist now to stay connected
-        </p>
+
       </div>
 
       {/* Hero market visual */}

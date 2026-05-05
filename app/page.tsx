@@ -11,14 +11,14 @@ export default function Home() {
   return (
     <main className="bg-[#06080C] min-h-screen">
       <Hero />
-      <Markets />
-      <div className="bg-[url('/bg-5.png')] bg-cover bg-center">
-        <Rewards />
+      {/* <Markets /> */}
+      {/* <div className="bg-[url('/bg-5.png')] bg-cover bg-center"> */}
+        {/* <Rewards /> */}
         {/* <Awards /> */}
         {/* <Trust /> */}
         {/* <Community /> */}
-        <Footer />
-      </div>
+        {/* <Footer /> */}
+      {/* </div> */}
     </main>
   );
 }
