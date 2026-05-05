@@ -17,6 +17,10 @@ export function Hero() {
       />
       <div className="absolute inset-0 z-0 bg-black/45" />
 
+      {/* Ambient Deep Space Gold & Electric Cyan Glow */}
+      <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-yellow-500/10 rounded-full blur-[160px] pointer-events-none z-0" />
+      <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-cyan-500/10 rounded-full blur-[160px] pointer-events-none z-0" />
+
       {/* Nav */}
       <nav
         className="relative z-20 max-w-7xl mx-auto px-8 pt-7 flex items-center justify-between transition-all duration-700 ease-out"
@@ -67,15 +71,25 @@ export function Hero() {
             transitionDelay: "600ms",
           }}
         >
-          <button className="px-5 py-2.5 rounded-full bg-blue-600 hover:bg-blue-500 text-[13px] font-medium transition">
+          <button className="px-12 py-2.5 rounded-full bg-gradient-to-r from-yellow-500/10 to-amber-500/10 hover:from-yellow-500/20 hover:to-amber-500/20 border border-yellow-500/50 text-yellow-500 hover:text-yellow-400 text-[13px] font-bold transition-all backdrop-blur-md shadow-[0_0_20px_rgba(245,158,11,0.15)] hover:shadow-[0_0_30px_rgba(245,158,11,0.3)]">
             Join Waitlist
           </button>
           <input
             type="email"
             placeholder="Enter email"
-            className="w-[210px] px-5 py-2.5 rounded-full bg-neutral-800/80 border border-white/10 text-[13px] text-white placeholder:text-neutral-400 outline-none transition focus:border-blue-400/70 focus:bg-neutral-800"
+            className="w-[320px] px-6 py-2.5 rounded-full bg-neutral-800/80 border border-white/10 text-[13px] text-white placeholder:text-neutral-400 outline-none transition focus:border-blue-400/70 focus:bg-neutral-800"
           />
         </div>
+        <p
+          className="font-serif-it mt-8 text-[20px] text-yellow-200 font-bold transition-all duration-700 ease-out"
+          style={{
+            opacity: mounted ? 1 : 0,
+            transform: mounted ? "translateY(0)" : "translateY(30px)",
+            transitionDelay: "800ms",
+          }}
+        >
+          Join the waitlist now to stay connected
+        </p>
       </div>
 
       {/* Hero market visual */}
