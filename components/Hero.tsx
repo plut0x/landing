@@ -32,7 +32,7 @@ export function Hero() {
       }
 
       setStatus("success");
-      setMessage("You're on the waitlist.");
+      setMessage("Congratulations ! You're on the waitlist.");
       setEmail("");
     } catch (error) {
       setStatus("error");
