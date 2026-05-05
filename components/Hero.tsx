@@ -68,16 +68,16 @@ export function Hero() {
 
       {/* Nav */}
       <nav
-        className="relative z-20 w-full max-w-7xl mx-auto px-8 pt-7 flex items-center justify-between transition-all duration-700 ease-out"
+        className="relative z-20 w-full max-w-7xl mx-auto px-5 sm:px-8 pt-5 sm:pt-7 flex items-center justify-between transition-all duration-700 ease-out"
         style={{
           opacity: mounted ? 1 : 0,
           transform: mounted ? "translateY(0)" : "translateY(-20px)",
         }}
       >
         <div className="flex items-center">
-          <img src="/whitelogo-nobg.png" alt="Plut0x" className="h-16 w-auto object-contain" />
+          <img src="/whitelogo-nobg.png" alt="Plut0x" className="h-12 sm:h-16 w-auto object-contain" />
         </div>
-        <a href="https://x.com/plut0xtrade" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[14px] font-medium text-neutral-300 hover:text-white transition border border-white/10 hover:border-white/20 hover:bg-white/5 px-4 py-2 rounded-full backdrop-blur-sm">
+        <a href="https://x.com/plut0xtrade" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[13px] sm:text-[14px] font-medium text-neutral-300 hover:text-white transition border border-white/10 hover:border-white/20 hover:bg-white/5 px-4 py-2 rounded-full backdrop-blur-sm">
           <svg viewBox="0 0 24 24" aria-hidden="true" className="h-3.5 w-3.5 fill-current">
             <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
           </svg>
@@ -86,9 +86,9 @@ export function Hero() {
       </nav>
 
       {/* Headline */}
-      <div className="relative z-20 flex-1 flex flex-col justify-center max-w-4xl mx-auto px-8 text-center mb-[450px]">
+      <div className="relative z-20 flex-1 flex flex-col justify-center max-w-4xl mx-auto px-5 sm:px-8 text-center mb-[180px] sm:mb-[450px]">
         <h1
-          className="text-[44px] sm:text-[56px] leading-[1.05] font-semibold tracking-tight transition-all duration-700 ease-out"
+          className="text-[36px] sm:text-[56px] leading-[1.05] font-semibold tracking-tight transition-all duration-700 ease-out"
           style={{
             opacity: mounted ? 1 : 0,
             transform: mounted ? "translateY(0)" : "translateY(30px)",
@@ -98,13 +98,13 @@ export function Hero() {
           <span className="font-serif-it font-normal">Exchange built for Makers</span>{" "}
           
           <br />
-          <span className="mt-5 text-[22px] flex items-center justify-center gap-2 font-normal text-neutral-200">
+          <span className="mt-4 sm:mt-5 text-[18px] sm:text-[22px] flex items-center justify-center gap-2 font-normal text-neutral-200">
             Powered by
-            <img src="/solanaLogo.svg" alt="Solana" className="h-4 w-auto object-contain mt-1" />
+            <img src="/solanaLogo.svg" alt="Solana" className="h-3.5 sm:h-4 w-auto object-contain mt-0.5 sm:mt-1" />
           </span>
         </h1>
         <p
-          className="mt-6 text-[14px] text-neutral-300 max-w-xl mx-auto leading-relaxed transition-all duration-700 ease-out"
+          className="mt-5 sm:mt-6 text-[14px] sm:text-[15px] text-neutral-300 max-w-xl mx-auto leading-relaxed transition-all duration-700 ease-out px-2 sm:px-0"
           style={{
             opacity: mounted ? 1 : 0,
             transform: mounted ? "translateY(0)" : "translateY(30px)",
@@ -119,7 +119,7 @@ export function Hero() {
         </p>
         <form
           onSubmit={handleSubmit}
-          className="mt-7 flex flex-col sm:flex-row items-center justify-center gap-3 transition-all duration-700 ease-out"
+          className="mt-6 sm:mt-7 flex flex-col sm:flex-row items-center justify-center gap-3 transition-all duration-700 ease-out w-full max-w-[320px] sm:max-w-none mx-auto"
           style={{
             opacity: mounted ? 1 : 0,
             transform: mounted ? "translateY(0)" : "translateY(30px)",
@@ -132,12 +132,12 @@ export function Hero() {
             onChange={(event) => setEmail(event.target.value)}
             placeholder="Enter email"
             required
-            className="w-[320px] px-6 py-2.5 rounded-full bg-neutral-800/80 border border-white/10 text-[13px] text-white placeholder:text-neutral-400 outline-none transition focus:border-blue-400/70 focus:bg-neutral-800"
+            className="w-full sm:w-[320px] px-6 py-2.5 rounded-full bg-neutral-800/80 border border-white/10 text-[13px] text-white placeholder:text-neutral-400 outline-none transition focus:border-blue-400/70 focus:bg-neutral-800"
           />
           <button
             type="submit"
             disabled={status === "loading"}
-            className="px-12 py-2.5 rounded-full bg-gradient-to-r from-yellow-500/10 to-amber-500/10 hover:from-yellow-500/20 hover:to-amber-500/20 border border-yellow-500/50 text-yellow-500 hover:text-yellow-400 text-[13px] font-bold transition-all backdrop-blur-md shadow-[0_0_20px_rgba(245,158,11,0.15)] hover:shadow-[0_0_30px_rgba(245,158,11,0.3)] disabled:cursor-not-allowed disabled:opacity-60"
+            className="w-full sm:w-auto px-12 py-2.5 rounded-full bg-gradient-to-r from-yellow-500/10 to-amber-500/10 hover:from-yellow-500/20 hover:to-amber-500/20 border border-yellow-500/50 text-yellow-500 hover:text-yellow-400 text-[13px] font-bold transition-all backdrop-blur-md shadow-[0_0_20px_rgba(245,158,11,0.15)] hover:shadow-[0_0_30px_rgba(245,158,11,0.3)] disabled:cursor-not-allowed disabled:opacity-60"
           >
             {status === "loading" ? "Joining..." : "Join Waitlist"}
           </button>
