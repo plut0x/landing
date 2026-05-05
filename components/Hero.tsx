@@ -9,7 +9,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative bg-black text-white overflow-hidden">
+    <section className="relative w-full min-h-screen flex flex-col bg-black text-white overflow-hidden">
       {/* Hero background image from public/hero-section.png */}
       <div
         className="absolute inset-0 z-0 bg-cover bg-center"
@@ -32,7 +32,7 @@ export function Hero() {
 
       {/* Nav */}
       <nav
-        className="relative z-20 max-w-7xl mx-auto px-8 pt-7 flex items-center justify-between transition-all duration-700 ease-out"
+        className="relative z-20 w-full max-w-7xl mx-auto px-8 pt-7 flex items-center justify-between transition-all duration-700 ease-out"
         style={{
           opacity: mounted ? 1 : 0,
           transform: mounted ? "translateY(0)" : "translateY(-20px)",
@@ -41,7 +41,7 @@ export function Hero() {
         <div className="flex items-center">
           <img src="/whitelogo-nobg.png" alt="Plut0x" className="h-16 w-auto object-contain" />
         </div>
-        <a href="https://x.com/plut0xtrade" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[13px] font-medium text-neutral-300 hover:text-white transition border border-white/10 hover:border-white/20 hover:bg-white/5 px-4 py-2 rounded-full backdrop-blur-sm">
+        <a href="https://x.com/plut0xtrade" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[14px] font-medium text-neutral-300 hover:text-white transition border border-white/10 hover:border-white/20 hover:bg-white/5 px-4 py-2 rounded-full backdrop-blur-sm">
           <svg viewBox="0 0 24 24" aria-hidden="true" className="h-3.5 w-3.5 fill-current">
             <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
           </svg>
@@ -50,7 +50,7 @@ export function Hero() {
       </nav>
 
       {/* Headline */}
-      <div className="relative z-20 max-w-4xl mx-auto px-8 pt-20 text-center">
+      <div className="relative z-20 flex-1 flex flex-col justify-center max-w-4xl mx-auto px-8 text-center mb-[450px]">
         <h1
           className="text-[44px] sm:text-[56px] leading-[1.05] font-semibold tracking-tight transition-all duration-700 ease-out"
           style={{
@@ -101,103 +101,6 @@ export function Hero() {
 
       </div>
 
-      {/* Hero market visual */}
-      <div className="relative z-10 mt-14 h-[420px]">
-      </div>
     </section>
   );
 }
-
-
-// function MarketRow({
-//   color,
-//   symbol,
-//   name,
-//   price,
-//   change,
-//   muted = false,
-// }: {
-//   color: string;
-//   symbol: string;
-//   name: string;
-//   price: string;
-//   change: string;
-//   muted?: boolean;
-// }) {
-//   return (
-//     <div
-//       className="flex items-center justify-between rounded-xl px-3 py-2"
-//       style={{
-//         opacity: muted ? 0.35 : 1,
-//         filter: muted ? "blur(0.6px)" : "none",
-//         transition: "opacity 0.3s ease, filter 0.3s ease",
-//       }}
-//     >
-//       <div className="flex items-center gap-2.5">
-//         <div
-//           className={`w-7 h-7 rounded-full ${color} grid place-items-center text-[12px] font-bold text-white`}
-//         >
-//           {symbol}
-//         </div>
-//         <span className="text-[13px] text-white">{name}</span>
-//       </div>
-//       <div className="text-right">
-//         <div className="text-[13px] text-white tabular-nums">{price}</div>
-//         <div
-//           className={`text-[11px] tabular-nums ${change.startsWith("-") ? "text-red-400" : "text-emerald-400"}`}
-//         >
-//           {change}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-// const TICKER_MARKETS = [
-//   { color: "bg-violet-500", symbol: "◎", name: "SOL-USDC", price: "248.34", change: "+0.57%" },
-//   { color: "bg-orange-500", symbol: "₿", name: "BTC-USDC", price: "102,833", change: "+0.13%" },
-//   { color: "bg-emerald-500", symbol: "J", name: "JTO-USDC", price: "3.982", change: "+0.32%" },
-//   { color: "bg-blue-400",   symbol: "W", name: "WIF-USDC", price: "1.847",  change: "+1.14%" },
-//   { color: "bg-yellow-400", symbol: "◉", name: "BONK-USDC", price: "0.0000312", change: "-0.45%" },
-//   { color: "bg-pink-500",   symbol: "P", name: "PYTH-USDC", price: "0.284",  change: "+2.31%" },
-// ];
-
-// const ROW_H = 44; // px — height of each MarketRow slot
-
-// function MarketTicker() {
-//   const [offset, setOffset] = useState(0);
-//   const [sliding, setSliding] = useState(false);
-
-//   useEffect(() => {
-//     const id = setInterval(() => setSliding(true), 300);
-//     return () => clearInterval(id);
-//   }, []);
-
-//   function onTransitionEnd() {
-//     setSliding(false);
-//     setOffset((o) => (o + 1) % TICKER_MARKETS.length);
-//   }
-
-//   // Render 5 items: 4 visible slots + 1 item that slides up into view from below
-//   const items = Array.from({ length: 5 }, (_, i) =>
-//     TICKER_MARKETS[(offset + i) % TICKER_MARKETS.length],
-//   );
-
-//   return (
-//     <div style={{ height: ROW_H * 4, overflow: "hidden" }}>
-//       <div
-//         style={{
-//           transform: sliding ? `translateY(-${ROW_H}px)` : "translateY(0px)",
-//           transition: sliding ? "transform 0.5s cubic-bezier(0.4,0,0.2,1)" : "none",
-//         }}
-//         onTransitionEnd={onTransitionEnd}
-//       >
-//         {items.map((m, i) => (
-//           <div key={`${offset}-${i}`} style={{ height: ROW_H }}>
-//             <MarketRow {...m} muted={i >= 3} />
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// }
